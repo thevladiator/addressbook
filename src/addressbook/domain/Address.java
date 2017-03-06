@@ -28,8 +28,7 @@ public class Address implements Cloneable, Comparable<Address>{
     @Column
     private String country;
     
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn(name = "personId")
+    @ManyToOne
     private Person person;
     
     @Override

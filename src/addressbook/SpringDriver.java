@@ -8,7 +8,7 @@ public class SpringDriver {
     public static void main(String[] args) {
         System.out.println("I'm starting....");
         ApplicationContext context =
-                new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+                new ClassPathXmlApplicationContext(new String[]{"/resources/applicationContext.xml"});
 
         RegistrationClass registrationClass = context.getBean(RegistrationClass.class);
 

@@ -4,14 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -27,7 +20,7 @@ public class Person implements Comparable<Person>{
     @Column(name="lastname")
     private String lastName;
     
-    @OneToMany(mappedBy="person", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="person", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
     @Transient
     private List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
@@ -66,6 +59,12 @@ public class Person implements Comparable<Person>{
     
     public void addAddress(Address inAddress){
         addresses.add(inAddress);
+        inAddress.setPerson(this);
+    }
+
+    public void removeAddress(Address inAddress){
+        inAddress.setPerson(null);
+        addresses.remove(inAddress);
     }
     
     public void addPhone(PhoneNumber number){
