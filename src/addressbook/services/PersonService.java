@@ -13,7 +13,7 @@ public class PersonService{
     @Autowired
     private PersonRepository personRepository;
 
-    public void savePersonWithAddress(Person person){
+    public void savePerson(Person person){
         System.out.println("SAVING: " + person);
         personRepository.save(person);
     }
