@@ -1,17 +1,34 @@
 package addressbook.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table
 public class PhoneNumber {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String number;
     private PhoneType type;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "person_id", nullable = false)
+//    Person person;
     
     @Override
     public boolean equals(Object o){
-        PhoneNumber that = (PhoneNumber)o;
+        if (o == null)
+            return false;
+        else {
+            PhoneNumber that = (PhoneNumber) o;
+            if (!Objects.equals(number, that.number))
+                return false;
+        }
         
-        if (!Objects.equals(this.number, that.number)) return false;
-        return Objects.equals(this.type, that.type);
+        return true;
     }
     
     @Override
@@ -34,4 +51,5 @@ public class PhoneNumber {
     public void setType(PhoneType type) {
         this.type = type;
     }
+
 }

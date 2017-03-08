@@ -15,7 +15,7 @@ public class RegistrationClass {
     PersonService personService;
 
     public void process() {
-        personService.savePersonWithAddress(PersonDataGenerator.createPersonWithAddress());
+        personService.savePerson(PersonDataGenerator.createPersonWithAddressAndPhone());
         System.out.println("Persons: " + personService.getPeople());
     }
 }

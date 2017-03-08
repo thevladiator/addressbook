@@ -20,10 +20,11 @@ public class Person implements Comparable<Person>{
     @Column(name="lastname")
     private String lastName;
     
-    @OneToMany(mappedBy="person", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
-    @Transient
-    private List<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PhoneNumber> phoneNumbers;
     
     @Override
     public String toString() {
@@ -59,11 +60,9 @@ public class Person implements Comparable<Person>{
     
     public void addAddress(Address inAddress){
         addresses.add(inAddress);
-        inAddress.setPerson(this);
     }
 
     public void removeAddress(Address inAddress){
-        inAddress.setPerson(null);
         addresses.remove(inAddress);
     }
     

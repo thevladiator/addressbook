@@ -3,6 +3,8 @@ package addressbook.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import addressbook.domain.PhoneNumber;
+import addressbook.domain.PhoneType;
 import org.springframework.stereotype.Component;
 
 import addressbook.domain.Address;
@@ -52,6 +54,29 @@ public class PersonDataGenerator {
         person.setAddresses(createAddresses());
         
         return person;
+    }
+
+    public static Person createPersonWithAddressAndPhone(){
+        Person person = createPersonWithAddress();
+        person.setPhoneNumbers(createPhoneNumbers());
+        return person;
+    }
+
+    public static List<PhoneNumber> createPhoneNumbers(){
+        List<PhoneNumber> phoneNumbers = new ArrayList<>();
+
+        PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.setNumber("123-456-7890");
+        phoneNumber.setType(PhoneType.FIXED);
+
+        PhoneNumber phoneNumber1 = new PhoneNumber();
+        phoneNumber1.setNumber("111-222-3333");
+        phoneNumber1.setType((PhoneType.CELL));
+
+        phoneNumbers.add(phoneNumber);
+        phoneNumbers.add(phoneNumber1);
+
+        return phoneNumbers;
     }
 
 }

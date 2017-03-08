@@ -27,10 +27,7 @@ public class Address implements Cloneable, Comparable<Address>{
     private String county;
     @Column
     private String country;
-    
-    @ManyToOne
-    private Person person;
-    
+
     @Override
     public String toString() {
         
@@ -91,13 +88,5 @@ public class Address implements Cloneable, Comparable<Address>{
     }
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 }
