@@ -3,7 +3,7 @@ package addressbook.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import addressbook.domain.PhoneNumber;
+import addressbook.domain.Phone;
 import addressbook.domain.PhoneType;
 import org.springframework.stereotype.Component;
 
@@ -58,25 +58,25 @@ public class PersonDataGenerator {
 
     public static Person createPersonWithAddressAndPhone(){
         Person person = createPersonWithAddress();
-        person.setPhoneNumbers(createPhoneNumbers());
+        person.setPhones(createPhoneNumbers());
         return person;
     }
 
-    public static List<PhoneNumber> createPhoneNumbers(){
-        List<PhoneNumber> phoneNumbers = new ArrayList<>();
+    public static List<Phone> createPhoneNumbers(){
+        List<Phone> phones = new ArrayList<>();
 
-        PhoneNumber phoneNumber = new PhoneNumber();
-        phoneNumber.setNumber("123-456-7890");
-        phoneNumber.setType(PhoneType.FIXED);
+        Phone phone = new Phone();
+        phone.setNumber("123-456-7890");
+        phone.setType(PhoneType.FIXED);
 
-        PhoneNumber phoneNumber1 = new PhoneNumber();
-        phoneNumber1.setNumber("111-222-3333");
-        phoneNumber1.setType((PhoneType.CELL));
+        Phone phone1 = new Phone();
+        phone1.setNumber("111-222-3333");
+        phone1.setType((PhoneType.CELL));
 
-        phoneNumbers.add(phoneNumber);
-        phoneNumbers.add(phoneNumber1);
+        phones.add(phone);
+        phones.add(phone1);
 
-        return phoneNumbers;
+        return phones;
     }
 
 }

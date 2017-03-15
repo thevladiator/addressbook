@@ -1,6 +1,5 @@
 package addressbook.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,18 +19,18 @@ public class Person implements Comparable<Person>{
     @Column(name="lastname")
     private String lastName;
     
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PhoneNumber> phoneNumbers;
+    private List<Phone> phones;
     
     @Override
     public String toString() {
         
         return "\n  Person{firstName:'" + firstName + "',lastName:'" + lastName + "'" +
                (!Objects.isNull(addresses) ? addresses.toString() : "no address") +
-               (!Objects.isNull(phoneNumbers) ? phoneNumbers.toString() : "no phone numbers");
+               (!Objects.isNull(phones) ? phones.toString() : "no phone numbers");
     }
     
     @Override
@@ -41,6 +40,8 @@ public class Person implements Comparable<Person>{
     
     @Override
     public boolean equals(Object o) {
+        if (this.equals(o))
+            return true;
         if (o == null)
             return false;
         if (this.getClass() != o.getClass())
@@ -50,7 +51,8 @@ public class Person implements Comparable<Person>{
         
         if (!firstName.equals(that.firstName)) return false;
         if (!lastName.equals(that.lastName)) return false;
-        return addresses.equals(that.addresses);
+
+        return true;
     }
     
     @Override
@@ -66,8 +68,8 @@ public class Person implements Comparable<Person>{
         addresses.remove(inAddress);
     }
     
-    public void addPhone(PhoneNumber number){
-        phoneNumbers.add(number);
+    public void addPhone(Phone number){
+        phones.add(number);
     }
     
     public String getFirstName() {
@@ -89,12 +91,12 @@ public class Person implements Comparable<Person>{
         this.addresses = addresses;
     }
 
-    public List<PhoneNumber> getPhoneNumbers() {
-        return phoneNumbers;
+    public List<Phone> getPhones() {
+        return phones;
     }
 
-    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
     }
 
     public Integer getId() {

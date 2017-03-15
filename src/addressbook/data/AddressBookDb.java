@@ -1,14 +1,11 @@
 package addressbook.data;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import addressbook.domain.Address;
 import addressbook.domain.Person;
-import addressbook.domain.PhoneNumber;
+import addressbook.domain.Phone;
 import addressbook.domain.PhoneType;
 
 public class AddressBookDb {
@@ -21,7 +18,7 @@ public class AddressBookDb {
     
     public static List<Address> addressDb;
     public static List<Person> peopleDb;
-    public static List<PhoneNumber> phonesDb;
+    public static List<Phone> phonesDb;
     
     private AddressBookDb (){
         addressDb = createAddresses(ADDRESS_SEED);
@@ -59,12 +56,12 @@ public class AddressBookDb {
         return addresses;
     }
     
-    private static List<PhoneNumber> createPhones (int seed){
-        List<PhoneNumber> phones = new ArrayList<PhoneNumber>();
+    private static List<Phone> createPhones (int seed){
+        List<Phone> phones = new ArrayList<Phone>();
         final String PHONE_PREFIX_SMALL = "123-456-777";
         final String PHONE_PREFIX_LARGE = "123-456-77";
         for (int i=1; i <= seed; i++){
-            PhoneNumber phone = new PhoneNumber();
+            Phone phone = new Phone();
             
             if (i < 10)
                 phone.setNumber(PHONE_PREFIX_SMALL + i);
