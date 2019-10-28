@@ -19,7 +19,7 @@ public class PersonalDataServiceImpl implements PersonalDataService{
 
     @Override
     public void insertPersonWithoutAddress(Person person) {
-        personRepository.save(PersonDataGenerator.createPeople());
+        personRepository.saveAll(PersonDataGenerator.createPeople());
     }
 
     @Override
