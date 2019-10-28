@@ -8,11 +8,10 @@ import java.util.List;
 
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Integer>{
+
     void delete(Person deleted);
 
     List<Person> findAll();
- 
-    Person findOne(Integer id);
  
     Person save(Person persisted);
 }

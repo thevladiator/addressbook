@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -12,7 +12,9 @@
         <property name="show_sql">true</property> 
         <property name="connection.pool_size">1</property>
          
-        <mapping class="addressbook.Person"></mapping>
+        <mapping class="addressbook.domain.Person"></mapping>
+        <mapping class="addressbook.domain.Phone"></mapping>
+        <mapping class="addressbook.domain.Address"></mapping>
  
     </session-factory>
 </hibernate-configuration>

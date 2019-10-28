@@ -11,7 +11,7 @@ public class AddressBookDriver {
         
         //System.out.println(AddressBookDb.db.toString());
         
-        TreeSet<Person> people = new TreeSet<Person>(AddressBookDb.peopleDb);
+        TreeSet<Person> people = new TreeSet<>(AddressBookDb.peopleDb);
         System.out.println(people.toString());
         //System.out.println(AddressBookDb.peopleDb);
 

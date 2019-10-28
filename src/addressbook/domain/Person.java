@@ -61,7 +61,9 @@ public class Person implements Comparable<Person>{
     }
     
     public void addAddress(Address inAddress){
-        addresses.add(inAddress);
+        if (addresses != null) {
+            addresses.add(inAddress);
+        }
     }
 
     public void removeAddress(Address inAddress){
@@ -69,7 +71,9 @@ public class Person implements Comparable<Person>{
     }
     
     public void addPhone(Phone number){
-        phones.add(number);
+        if (phones != null) {
+            phones.add(number);
+        }
     }
     
     public String getFirstName() {

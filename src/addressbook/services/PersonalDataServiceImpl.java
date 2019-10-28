@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Component
-public class PersonalDataServiceImpl implements PersonalDataService{
+public class PersonalDataServiceImpl implements PersonalDataService {
 
     @Autowired
     private PersonRepository personRepository;
